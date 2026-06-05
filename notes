@@ -1,0 +1,42 @@
+Steps :
+
+> npx create-next-app@15.5.13
+create-next-app@15.5.13
+Ok to proceed? (y)
+
+✔ What is your project named? … manggo-webapp
+✔ Would you like to use TypeScript? … No
+✔ Which linter would you like to use? › ESLint
+✔ Would you like to use Tailwind CSS? … Yes
+✔ Would you like your code inside a `src/` directory? … No
+✔ Would you like to use App Router? (recommended) … Yes
+✔ Would you like to use Turbopack? (recommended) … Yes
+✔ Would you like to customize the import alias (`@/*` by default)? … No
+
+output -> manggo-webapp directory
+
+
+
+=================================================
+[Concepts]
+
+NextJs - ExpressJs - SQLite
+Pollination AI as AI API to generate image.
+Resulted images are saved in cloudinary, cloud-based storage and have free tier.
+
+
+Business Flow:
+	- User open web dashboard
+	- User create prompt on input text
+	- Once user click "Generate Image" button, the image result will be shown as thumbnail image in the bottom list (horizontally), clickable to open full screen, and downloadable
+	- There is also "Gallery" menu, which will list all the images
+	- Under the thumbnail images, there will be "Use prompt" button, which if it is clicked, the related prompt will be filled in the text input. So that, user can edit the pre-existed prompt to generate new prompt and image.
+	- The images will persist even after user refresh the page.
+
+
+Technical Design:
+	- sessionId generated every page open and saved in localStorage of browser, so similar browser will be recognize as the same sessionId until it is removed by clear data.
+	- every prompt submitted to backend, will generate promptId, that can be correlated with specific image result, and bound to parent sessionId. So multiple sessions can be held without sharing images between them.
+	- sessionId, promptId and imageLink are saved in the DB at backend, so those can be persist over refresh pages.
+
+
