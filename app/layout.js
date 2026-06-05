@@ -1,21 +1,26 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Nunito, Poppins } from 'next/font/google';
 import "./globals.css";
 
 // provider for Toast
 import { Toaster } from 'react-hot-toast';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'], // hanya memuat ketebalan 400, 600, 700
+  style: ['normal', 'italic'],
+  variable: '--font-poppins',
+  display: 'swap',
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const nunito = Nunito({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-nunito',
+  display: 'swap',
 });
 
 export const metadata = {
-  title: "Manggo App",
+  title: "MangGo App",
   description: "Manga on the Go. Generate Manga Images Easily ✨",
   icons: {
     icon: [
@@ -33,7 +38,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-slate-800 text-sm`}
+        className={`${poppins.variable} ${nunito.variable} antialiased font-nunito
+          text-slate-800 text-sm`}
       >
         {children}
       </body>

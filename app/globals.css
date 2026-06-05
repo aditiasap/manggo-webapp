@@ -5,3 +5,8 @@
     @apply hover:opacity-60 hover:cursor-pointer;
   }
 }
+
+@theme {
+  --font-poppins: var(--font-poppins);
+  --font-nunito: var(--font-nunito);
+}

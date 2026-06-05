@@ -14,7 +14,7 @@ const HomePage = (props) => {
 					alt="App Logo"
 					className="object-contain w-1/2 lg:w-1/6 mx-auto"
 				/>
-				<h1 className="mt-2 text-center text-pink-700 font-semibold text-lg">
+				<h1 className="mt-2 text-center text-pink-700 font-semibold text-lg font-poppins">
 					Manga on the Go
 				</h1>
 				<h2 className="text-center text-slate-500">AI Anime Image Generator</h2>
