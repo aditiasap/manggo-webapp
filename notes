@@ -16,6 +16,18 @@ Ok to proceed? (y)
 output -> manggo-webapp directory
 
 
+Loader Spinner :
+- npm install --save react-spinners
+
+React Icons :
+- react-icons https://react-icons.github.io/react-icons/ :
+  > npm install --save react-icons
+
+Toast https://react-hot-toast.com/ :
+- npm install --save react-hot-toast
+
+
+
 
 =================================================
 [Concepts]
@@ -28,15 +40,52 @@ Resulted images are saved in cloudinary, cloud-based storage and have free tier.
 Business Flow:
 	- User open web dashboard
 	- User create prompt on input text
-	- Once user click "Generate Image" button, the image result will be shown as thumbnail image in the bottom list (horizontally), clickable to open full screen, and downloadable
-	- There is also "Gallery" menu, which will list all the images
-	- Under the thumbnail images, there will be "Use prompt" button, which if it is clicked, the related prompt will be filled in the text input. So that, user can edit the pre-existed prompt to generate new prompt and image.
-	- The images will persist even after user refresh the page.
+	- Once user click "Generate Image" button, the image result will be shown as thumbnail image in the "Gallery", bottom side of page.
+	- Each image will have a "Regenerate" button to set the related prompt on the input text, so that user can edit pre-existed prompt to generate new prompt and image.
+	- Each image will also have clickable buttons to view full screen and download the image.
+	- The images will persist in the gallery even after user refresh the page.
 
 
 Technical Design:
 	- sessionId generated every page open and saved in localStorage of browser, so similar browser will be recognize as the same sessionId until it is removed by clear data.
 	- every prompt submitted to backend, will generate promptId, that can be correlated with specific image result, and bound to parent sessionId. So multiple sessions can be held without sharing images between them.
 	- sessionId, promptId and imageLink are saved in the DB at backend, so those can be persist over refresh pages.
+	- Use preset when querying image from AI API, to improve relevance.
+
+
+Data structure:
+	ImageGeneration {
+		sessionId
+		contents: [
+			{
+				promptId,
+				prompt,
+				imageUrl,
+				status,
+				createdAt,
+			}
+		]
+	}
+
+=======================
+[Samples]
+
+https://image.pollinations.ai/prompt/a%20samurai%20in%20tokyo
+
+const prompt = "a samurai in tokyo";
+const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`;
+
+
+Preset:
+"High quality illustration, cinematic lighting, ultra detailed"
+
+User:
+"a samurai in modern Tokyo"
+
+Final:
+"High quality illustration, cinematic lighting, ultra detailed, a samurai in modern Tokyo"
+
+
+sessionId = crypto.randomUUID();
 
 
