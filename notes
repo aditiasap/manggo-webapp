@@ -26,7 +26,11 @@ React Icons :
 Toast https://react-hot-toast.com/ :
 - npm install --save react-hot-toast
 
-
+Create favicon :
+	- go to https://favicon.io/
+	- upload png file with square size
+	- generate and download
+	- resulted favicon files and manifest can be put within /public, then referred by metadata at layout
 
 
 =================================================
