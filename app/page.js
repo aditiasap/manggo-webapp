@@ -13,6 +13,7 @@ const HomePage = (props) => {
 					height={0}
 					alt="App Logo"
 					className="object-contain w-1/2 lg:w-1/6 mx-auto"
+					priority
 				/>
 				<h1 className="mt-2 text-center text-pink-700 font-semibold text-lg font-poppins">
 					Manga on the Go

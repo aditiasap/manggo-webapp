@@ -41,6 +41,7 @@ export default function RootLayout({ children }) {
         className={`${poppins.variable} ${nunito.variable} antialiased font-nunito
           text-slate-800 text-sm`}
       >
+        <Toaster />
         {children}
       </body>
     </html>

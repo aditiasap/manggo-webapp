@@ -1,37 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FiDownload, FiClock, FiEye, FiX } from 'react-icons/fi';
 import { LuImages, LuRefreshCw } from 'react-icons/lu';
-
-const listImages = [
-	{
-		id: 1,
-		prompt: 'Cyber Samurai',
-		style: 'shonen',
-		image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop',
-	},
-	{
-		id: 2,
-		prompt: 'Anime Girl',
-		style: 'shojo',
-		image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop',
-	},
-	{
-		id: 3,
-		prompt: 'Fantasy Castle',
-		style: 'ghibli',
-		image: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1200&auto=format&fit=crop',
-	},
-	{
-		id: 4,
-		prompt: 'Dark Warrior',
-		style: 'darkfan',
-		image: 'https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?q=80&w=1200&auto=format&fit=crop',
-	},
-];
+import { formatDistanceToNow } from 'date-fns';
 
 const Gallery = (props) => {
 	const [selectedImage, setSelectedImage] = useState(null);
+
+	useEffect(() => {
+		if (!props.sessionId) return;
+
+		props.getGallery();
+	}, [props.sessionId]);
 
 	const onDownload = async (item) => {
 		try {
@@ -73,7 +53,7 @@ const Gallery = (props) => {
 				</div>
 				<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 					{
-						listImages.map((item) => (
+						props.listImages && props.listImages.map((item) => (
 							<div
 								key={item.id}
 								className="group overflow-hidden rounded-xl shadow-lg">
@@ -93,7 +73,9 @@ const Gallery = (props) => {
 									<div className="text-xs text-slate-400 flex gap-2
 										items-center">
 										<FiClock size={14} />
-										15 minutes ago
+										{formatDistanceToNow(new Date(item.createdAt),
+											{ addSuffix: true }
+										)}
 									</div>
 									<div className="flex items-center justify-between
 										text-xs mt-4">

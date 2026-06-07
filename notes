@@ -33,12 +33,18 @@ Create favicon :
 	- resulted favicon files and manifest can be put within /public, then referred by metadata at layout
 
 
+Date fns (date utility lib) to get distance to now:
+- npm install --save date-fns
+
+
 =================================================
 [Concepts]
 
 NextJs - ExpressJs - SQLite
 Pollination AI as AI API to generate image.
 Resulted images are saved in cloudinary, cloud-based storage and have free tier.
+
+Main focus is building simple and intuitive UI with scalable design system.
 
 
 Business Flow:
