@@ -1,6 +1,4 @@
-# Manggo
-
-Manga on the Go (GenAI)
+# MangGo - Manga on the Go (GenAI)
 
 The App to generate AI-based Manga character images based on text prompts.
 
