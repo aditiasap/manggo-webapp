@@ -39,13 +39,21 @@ create .env file in the root project, and fill in as below:
 NEXT_PUBLIC_ENDPOINT='https://tukangaplikasi.com/manggo/api'
 ```
 
-If you want to run the API GW as well on your local device, you need to change this into
-http://localhost:37119/api
-
 
 ## Run in dev mode
 
 ```bash
 npm run dev
 ```
+
+------------------------------------------------------------
+## [OPTIONAL]
+
+If you want to run the API GW as well on your local device, you need appoint BE endpoint by changing .env file into:
+
+```bash
+NEXT_PUBLIC_ENDPOINT='http://localhost:37119/api'
+```
+
+and make sure the API GW is running at localhost:37119
 
