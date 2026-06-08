@@ -32,6 +32,7 @@ const Content = (props) => {
 
 	const checkSession = async (sess) => {
 		setLoading(true);
+		setLoadingState('');
 		const errorTitle = 'Failed to check session';
 
 		try {
@@ -71,6 +72,7 @@ const Content = (props) => {
 	};
 	const acquireSession = async () => {
 		setLoading(true);
+		setLoadingState('');
 		const errorTitle = 'Failed to get the session';
 
 		try {
@@ -112,6 +114,7 @@ const Content = (props) => {
 
 	const getGallery = async () => {
 		setLoading(true);
+		setLoadingState('');
 		const Authorization = 'Bearer ' + sessionId;
 		const errorTitle = 'Failed to get the images';
 

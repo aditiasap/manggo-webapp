@@ -2,7 +2,44 @@
 
 Manga on the Go (GenAI)
 
-The App to generate Manga character images based on text prompts.
+The App to generate AI-based Manga character images based on text prompts.
 
-Enjoy 👍
 
+## Features
+
+- Create anime image by AI through text-based prompting
+- Gallery of all resulted images and persisted over browser refresh
+- Re-use previous prompt and modify it to generate new similar images
+- No login needed
+- Simple and intuitive UI
+
+
+## Tech Stack
+
+- Frontend: NextJs (ReactJs)
+- API GW: ExpressJs (NodeJs) - Prisma
+- Database: SQLite
+- AI Endpoint: Pollinations AI
+- Image Storage: Cloudinary
+
+
+## Installation
+
+```bash
+git clone https://github.com/aditiasap/manggo-webapp.git
+cd manggo-webapp
+npm install
+```
+
+## Setup Environment
+
+create .env file in the root project, and fill in as below:
+
+NEXT_PUBLIC_ENDPOINT='https://tukangaplikasi.com/manggo/api'
+
+
+## Run in dev mode
+
+```bash
+npm run dev
+```

@@ -45,6 +45,7 @@ const listStyles = [
 const Prompt = (props) => {
 	const submitPrompt = async () => {
 		props.setLoading(true);
+		props.setLoadingState('');
 		try {
 			let session = props.sessionId;
 			let result = await generateImage(session);
@@ -108,6 +109,9 @@ const Prompt = (props) => {
 				data: responseData,
 			};
 		} catch (err) {
+			if (err?.name === "AbortError") {
+				throw new Error("Request timeout");
+			}
 			throw err;
 		}
 	};
@@ -145,6 +149,7 @@ const Prompt = (props) => {
 					}
 					else {
 						props.setLoading(false);
+						toast.error(data?.error || 'Image creation failed');
 					}
 					return;
 				}

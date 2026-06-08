@@ -40,10 +40,6 @@ Date fns (date utility lib) to get distance to now:
 =================================================
 [Concepts]
 
-NextJs - ExpressJs - SQLite
-Pollination AI as AI API to generate image.
-Resulted images are saved in cloudinary, cloud-based storage and have free tier.
-
 Main focus is building simple and intuitive UI with scalable design system.
 
 
@@ -63,39 +59,58 @@ Technical Design:
 	- Use preset when querying image from AI API, to improve relevance.
 
 
-Data structure:
-	ImageGeneration {
-		sessionId
-		contents: [
-			{
-				promptId,
-				prompt,
-				imageUrl,
-				status,
-				createdAt,
-			}
-		]
-	}
+
+Design Architecture:
+
+In order to achieve scalability, need granular layers of a system. Those, here are the design:
+
+FE (NextJs - React) - BE (Express - Prisma - SQLite) - Pollinations AI - Cloudinary (Cloud Image Service)
+
+
+
+Why choosing those tech stacks:
+
+- NextJs (React) at FE because it support client side and server side. Even though currently only use client side, but later on it still can be expanded into server side for better SEO.
+
+- ExpressJs (nodeJs) at BE because naturally async. Appropriate for API GW which its core function is dispatching requests to core backend systems.
+
+- Prisma is used for an abstraction layer between express and DB, make possibility to use SQLite for MVP, and changeable to PostgreSQL at growth later on.
+
+- SQLite is a small DB for MVP purpose. Once this app grows, recommended to upgrade into more production grade DB like PostgreSQL.
+
+- Pollinations AI is a AI API service which able to generate image. Appropriate for MangGo use case.
+
+- Cloudinary as a cloud-based image storage, is used for scalability purpose.
+
+
 
 =======================
-[Samples]
+[Negative Test Cases]
 
-https://image.pollinations.ai/prompt/a%20samurai%20in%20tokyo
+1. API Timeout:
 
-const prompt = "a samurai in tokyo";
-const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`;
-
-
-Preset:
-"High quality illustration, cinematic lighting, ultra detailed"
-
-User:
-"a samurai in modern Tokyo"
-
-Final:
-"High quality illustration, cinematic lighting, ultra detailed, a samurai in modern Tokyo"
+at backend, /generate-image api, comment out the return block.
 
 
-sessionId = crypto.randomUUID();
+2. Invalid prompt:
+a. empty prompt -> invalid input
+
+b. use bad invalid prompt:
+
+asdfsahj. jfajsdf jksahdfjhas fskfjhsd kjhsadfkj aksjdsfksajf sakdjhskdkjsahf jksdksfksa kjhaskjdfska sdfjkskjfhf kjhasjk fksja. kjhafsj kjahf. kjha fds
+asdfsahj. jfajsdf jksahdfjhas fskfjhsd kjhsadfkj aksjdsfksajf sakdjhskdkjsahf jksdksfksa kjhaskjdfska sdfjkskjfhf kjhasjk fksja. kjhafsj kjahf. kjha fds
+asdfsahj. jfajsdf jksahdfjhas fskfjhsd kjhsadfkj aksjdsfksajf sakdjhskdkjsahf jksdksfksa kjhaskjdfska sdfjkskjfhf kjhasjk fksja. kjhafsj kjahf. kjha fds
+asdfsahj. jfajsdf jksahdfjhas fskfjhsd kjhsadfkj aksjdsfksajf sakdjhskdkjsahf jksdksfksa kjhaskjdfska sdfjkskjfhf kjhasjk fksja. kjhafsj kjahf. kjha fds
+asdfsahj. jfajsdf jksahdfjhas fskfjhsd kjhsadfkj aksjdsfksajf sakdjhskdkjsahf jksdksfksa kjhaskjdfska sdfjkskjfhf kjhasjk fksja. kjhafsj kjahf. kjha fds
+
+original response from AI:
+AI response failed 400: {"success":false,"error":{"message":"Image provider error: Fireworks FLUX generation failed: {\"error\":{\"object\":\"error\",\"type\":\"invalid_request_error\",\"message\":\"Workflow encountered an error during execution: <class 'RuntimeError'> Trying to create tensor with negative dimension -460: [-460]\"}}","code":"BAD_REQUEST","timestamp":"2026-06-08T11:03:33.399Z","details":{"name":"UpstreamError","upstreamStatus":400,"upstreamHost":"api.fireworks.ai","upstreamBody":"{\"message\":\"Fireworks FLUX generation failed: {\\\"error\\\":{\\\"object\\\":\\\"error\\\",\\\"type\\\":\\\"invalid_request_error\\\",\\\"message\\\":\\\"Workflow encountered an error during execution: <class 'RuntimeError'> Trying to create tensor with negative dimension -460: [-460]\\\"}}\"}"},"cause":{"status":400,"upstreamUrl":"https://api.fireworks.ai/inference/v1/workflows/accounts/fireworks/models/flux-1-schnell-fp8/text_to_image","name":"HttpError"}},"status":400}
+
+
+3. broken response from AI:
+
+a. use a broken API Key of Pollination
+
+b. show the code for potential broken image response, since no sample response from AI API so far.
 
 
