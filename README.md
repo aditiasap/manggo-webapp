@@ -49,7 +49,9 @@ npm run dev
 ------------------------------------------------------------
 ## [OPTIONAL]
 
-If you want to run the API GW as well on your local device, you need appoint BE endpoint by changing .env file into:
+If you want to run the API GW as well on your local device, please visit https://github.com/aditiasap/manggo-api
+
+then you need appoint BE endpoint by changing .env file into:
 
 ```bash
 NEXT_PUBLIC_ENDPOINT='http://localhost:37119/api'
