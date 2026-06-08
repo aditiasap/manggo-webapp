@@ -23,6 +23,8 @@ The App to generate AI-based Manga character images based on text prompts.
 
 ## Installation
 
+Make sure git and node version > 20 is installed and running
+
 ```bash
 git clone https://github.com/aditiasap/manggo-webapp.git
 cd manggo-webapp
@@ -33,8 +35,9 @@ npm install
 
 create .env file in the root project, and fill in as below:
 
+```bash
 NEXT_PUBLIC_ENDPOINT='https://tukangaplikasi.com/manggo/api'
-
+```
 
 ## Run in dev mode
 
