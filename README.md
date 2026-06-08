@@ -49,7 +49,3 @@ http://localhost:37119/api
 npm run dev
 ```
 
---------------------------------------------------------------
-If you want to run the API GW as well on your local device, 
-
-
