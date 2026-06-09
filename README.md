@@ -46,6 +46,12 @@ NEXT_PUBLIC_ENDPOINT='https://tukangaplikasi.com/manggo/api'
 npm run dev
 ```
 
+
+## Run on browser
+
+Go with http://localhost:3000/manggo
+
+
 ------------------------------------------------------------
 ## [OPTIONAL]
 
@@ -59,3 +65,6 @@ NEXT_PUBLIC_ENDPOINT='http://localhost:37119/api'
 
 and make sure the API GW is running at localhost:37119
 
+
+------------------------------------------------------------
+Powered by [Pollinations AI](https://pollinations.ai)
