@@ -62,6 +62,7 @@ const Prompt = (props) => {
 
 			// start polling
 			pollJobStatus(jobId, session);
+			props.setLoadingState('queueing');
 
 			return jobId;
 		} catch (err) {
