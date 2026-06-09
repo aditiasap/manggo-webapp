@@ -8,7 +8,7 @@ const HomePage = (props) => {
 			py-2 px-4 lg:px-12 flex flex-col">
 			<header className="py-2">
 				<Image
-					src={"/images/logo_manggo_landscape.png"}
+					src={"/manggo/images/logo_manggo_landscape.png"}
 					width={1000}
 					height={0}
 					alt="App Logo"
