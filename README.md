@@ -67,4 +67,8 @@ and make sure the API GW is running at localhost:37119
 
 
 ------------------------------------------------------------
-Powered by [Pollinations AI](https://pollinations.ai)
+<p align="center">
+  <sub>
+    Powered by <a href="https://pollinations.ai">Pollinations AI</a>
+  </sub>
+</p>
