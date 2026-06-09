@@ -60,7 +60,7 @@ If you want to run the API GW as well on your local device, please visit https:/
 then you need appoint BE endpoint by changing .env file into:
 
 ```bash
-NEXT_PUBLIC_ENDPOINT='http://localhost:37119/api'
+NEXT_PUBLIC_ENDPOINT='http://localhost:37119/manggo/api'
 ```
 
 and make sure the API GW is running at localhost:37119
