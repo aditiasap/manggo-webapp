@@ -62,7 +62,7 @@ Technical Design:
 
 Design Architecture:
 
-In order to achieve scalability, need granular layers of a system. Those, here are the design:
+In order to achieve scalability, need granular layers of a system. Thus, here are the design:
 
 FE (NextJs - React) - BE (Express - Prisma - SQLite) - Pollinations AI - Cloudinary (Cloud Image Service)
 
